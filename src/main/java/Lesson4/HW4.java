@@ -4,14 +4,32 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class HW4 {
+    /**
+     * Игровая карта
+     */
     public static char[][] map;
+    /**
+     * Размер поля
+     */
     public static final int SIZE = 3;
+    /**
+     * Сколько точе надо для победы
+     */
     public static final int DOTS_TO_WIN = 3;
+
+    /**
+     * Пустая ячейка
+     */
     public static final char DOT_EMPTY = '*';
+
     public static final char DOT_X = 'X';
+
     public static final char DOT_O = 'O';
+
     public static final Scanner SCANNER = new Scanner(System.in);
+
     public static final Random RANDOM = new Random();
+
 
     public static void main(String[] args) {
         initMap();
@@ -52,6 +70,9 @@ public class HW4 {
         return true;
     }
 
+    /**
+     * Инициализирует и заполняет карту пустыми ячейками
+     */
     public static void initMap() {
         map = new char[SIZE][SIZE];
         for (int i = 0; i < SIZE; i++) {
@@ -61,23 +82,29 @@ public class HW4 {
         }
     }
 
+    /**
+     * Печатает поле на экран
+     */
     public static void printMap() {
+        //верхние координаты
         for (int i = 0; i <= SIZE; i++) {
             System.out.print(i + " ");
         }
         System.out.println();
 
         for (int i = 0; i < SIZE; i++) {
-
+            //левые координаты
             System.out.print((i + 1) + " ");
             for (int j = 0; j < SIZE; j++) {
                 System.out.print(map[i][j] + " ");
             }
             System.out.println();
         }
-
     }
 
+    /**
+     * Ход человека
+     */
     public static void humanTurn() {
         int x;
         int y;
@@ -89,6 +116,9 @@ public class HW4 {
         map[x][y] = DOT_X;
     }
 
+    /**
+     * Валидна ли ячейка
+     */
     public static boolean isCellValid(int x, int y) {
         //проверили что попали в массив
         if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) {
@@ -102,6 +132,9 @@ public class HW4 {
         }
     }
 
+    /**
+     * Ход компуктера
+     */
     public static void aiTurn() {
         int x;
         int y;
@@ -114,54 +147,46 @@ public class HW4 {
         map[x][y] = DOT_O;
     }
 
+    /**
+     * Проверяет выигрыш.
+     *
+     * @param sym символ для проерки победы
+     */
     public static boolean checkWin(char sym) {
-//        //горизонтали
-//        if (map[0][0] == sym && map[0][1] == sym && map[0][2] == sym) {
-//            return true;
-//        }
-//        if (map[1][0] == sym && map[1][1] == sym && map[1][2] == sym) {
-//            return true;
-//        }
-//        if (map[2][0] == sym && map[2][1] == sym && map[2][2] == sym) {
-//            return true;
-//        }
-//        //вертикали
-//        if (map[0][0] == sym && map[1][0] == sym && map[2][0] == sym) {
-//            return true;
-//        }
-//        if (map[0][1] == sym && map[1][1] == sym && map[2][1] == sym) {
-//            return true;
-//        }
-//        if (map[0][2] == sym && map[1][2] == sym && map[2][2] == sym) {
-//            return true;
-//        }
-//        //диагонали
-//        if (map[0][0] == sym && map[1][1] == sym && map[2][2] == sym) {
-//            return true;
-//        }
-//        if (map[0][2] == sym && map[1][1] == sym && map[2][0] == sym) {
-//            return true;
-//        }
-//        return false;
-//    }
+        //горизонтали
+        if (map[0][0] == sym && map[0][1] == sym && map[0][2] == sym) {
+            return true;
+        }
+        if (map[1][0] == sym && map[1][1] == sym && map[1][2] == sym) {
+            return true;
+        }
+        if (map[2][0] == sym && map[2][1] == sym && map[2][2] == sym) {
+            return true;
+        }
+        //вертикали
+        if (map[0][0] == sym && map[1][0] == sym && map[2][0] == sym) {
+            return true;
+        }
+        if (map[0][1] == sym && map[1][1] == sym && map[2][1] == sym) {
+            return true;
+        }
+        if (map[0][2] == sym && map[1][2] == sym && map[2][2] == sym) {
+            return true;
+        }
+        //диагонали
+        if (map[0][0] == sym && map[1][1] == sym && map[2][2] == sym) {
+            return true;
+        }
+        if (map[0][2] == sym && map[1][1] == sym && map[2][0] == sym) {
+            return true;
+        }
+        return false;
+
+    }
+
+
+}
+
 
 //        Попробовала придумать свое решение. Не работает :) Что скажете?
 
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++)
-                if (map[i][j] == sym && map[i][SIZE] == sym) {
-                    return true;
-                    if (map[i][j] != sym || map[SIZE][j] != sym) {
-                        continue;
-                    }
-                    return true;
-                    if (map[i][j] == sym && map[SIZE][SIZE] == sym) {
-                        return true;
-                    }
-                }
-            return false;
-
-
-        }
-    }
-}
