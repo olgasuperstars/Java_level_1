@@ -4,10 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class HW4 {
-    import java.util.Random;
-import java.util.Scanner;
 
-    public class HW4 {
         public static char[][] map;
         public static final int SIZE = 3;
         public static final int DOTS_TO_WIN = 3;
