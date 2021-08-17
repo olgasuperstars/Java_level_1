@@ -13,7 +13,8 @@ public class employeeApp {
 
         for (int i = 0; i < empArr.length; i++){
             if (empArr[i].age > 40) {
-                System.out.println(empArr[i].name + ", " + empArr[i].position + ", " + empArr[i].mail + ", " + empArr[i].cell + ", " + empArr[i].salary + ", " + empArr[i].age);
+//                System.out.println(empArr[i].name + ", " + empArr[i].position + ", " + empArr[i].mail + ", " + empArr[i].cell + ", " + empArr[i].salary + ", " + empArr[i].age);
+                empArr[i].info();
             }
         }
 
